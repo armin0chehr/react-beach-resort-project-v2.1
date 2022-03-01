@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import logo from '../images/logo.svg'
 import { FaAlignRight } from "react-icons/fa";
 
@@ -17,10 +17,12 @@ const [isOpen, setIsOpen] = useState(false);
              </button>             
 			</div>
 			<ul className={`nav-links ${isOpen ? "show-nav" : ""}`}>
-				<li><Link to="/">Home</Link></li>
-				<li><Link to="rooms">Rooms</Link></li>
+				<li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-nav' : '')} >Home</NavLink></li>
+				<li><NavLink to="rooms" className={({ isActive }) => (isActive ? 'active-nav' : '')}>Rooms</NavLink></li>
 			</ul>
 		</div>
 	</nav>
 	)
 }
+
+
