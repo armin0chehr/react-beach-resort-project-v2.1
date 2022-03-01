@@ -12,7 +12,7 @@ const [isOpen, setIsOpen] = useState(false);
 		<div className="nav-center">
 			<div className="nav-header">
 			<Link to="/"><img src={logo} alt="logo"/></Link>
-			<button class="nav-btn" onClick={() => setIsOpen(value => !value)} >
+			<button className="nav-btn" onClick={() => setIsOpen(value => !value)} >
                <FaAlignRight className="nav-icon"/> 
              </button>             
 			</div>
