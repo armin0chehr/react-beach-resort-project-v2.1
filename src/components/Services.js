@@ -38,15 +38,13 @@ this.state = {
 	render() {
 		return (
 
-<section class="services">
+<section className="services">
     <Title title='Services'/>
 
-    <div class="services-center">
-
-{console.log (this.state.services)}
-
+    <div className="services-center">
+    
 {this.state.services.map((service, index) => (
-		<article key={index} class="service" >
+		<article key={index} className="service" >
 			<span>{service.icon}</span>
 			<h6>{service.title}</h6>
 			<p>{service.info}</p>
