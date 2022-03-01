@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react';
+
 import { Link } from "react-router-dom";
+import logo from '../images/logo.svg'
+import { FaAlignRight } from "react-icons/fa";
 
 export default function Navbar() {
+const [isOpen, setIsOpen] = useState(false);
+
 	return (
 	<nav className="navbar">
 		<div className="nav-center">
 			<div className="nav-header">
-			<h1>Home</h1>
+			<Link to="/"><img src={logo} alt="logo"/></Link>
+			<button class="nav-btn" onClick={() => setIsOpen(value => !value)} >
+               <FaAlignRight className="nav-icon"/> 
+             </button>             
 			</div>
-			<ul className="nav-links">
-				<li><Link to="/">Home</Link> |{" "}</li>
-				<li><Link to="room">Rooms</Link></li>
-			    
+			<ul className={`nav-links ${isOpen ? "show-nav" : ""}`}>
+				<li><Link to="/">Home</Link></li>
+				<li><Link to="rooms">Rooms</Link></li>
 			</ul>
 		</div>
 	</nav>
