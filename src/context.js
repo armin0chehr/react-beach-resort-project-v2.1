@@ -3,13 +3,26 @@ import items from "./data";
 
 const RoomContext = React.createContext();
 export default class RoomProvider extends React.Component {
-state ={n:'hello', m:'word' }
+state ={
+  rooms: [],
+  sortedRooms:[],
+  featuredRooms:[],
+  loading: true
+ }
 
 componentDidMount(){
 let rooms = this.formatData(items);
-console.log({rooms})
-}
+let featuredRooms = rooms.filter((room)=> room.featured=== true);
 
+//console.log({rooms});
+
+this.setState({
+  rooms,
+featuredRooms,
+loading:false
+  })
+}
+// import data from data.js
 formatData(items){
   let tempItems = items.map((item) =>{
     let id = item.sys.id;
