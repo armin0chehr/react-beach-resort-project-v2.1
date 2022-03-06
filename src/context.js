@@ -13,11 +13,10 @@ state ={
 componentDidMount(){
 let rooms = this.formatData(items);
 let featuredRooms = rooms.filter((room)=> room.featured=== true);
-
 //console.log({rooms});
 
 this.setState({
-  rooms,
+rooms,
 featuredRooms,
 loading:false
   })
@@ -33,9 +32,22 @@ formatData(items){
   return tempItems
 }
 
+// find room by slug
+getRoom =(slug)=>{
+  let tempRooms = [...this.state.rooms];
+  let room =tempRooms.find((room)=>room.slug === slug )
+  // console.log("Room = " + room)
+
+  return room;
+}
+
   render() {
     return (
-      <RoomContext.Provider value={{...this.state}} >
+      <RoomContext.Provider 
+      value={{
+        ...this.state,
+        getRoom:this.getRoom
+      }} >
         {this.props.children}
       </RoomContext.Provider>
     )
