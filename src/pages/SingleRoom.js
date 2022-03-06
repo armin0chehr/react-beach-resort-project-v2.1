@@ -8,7 +8,15 @@ import defaultImg from "../images/room-1.jpeg";
 export default function SingleRoom(props) {
 const {getRoom}= useContext (RoomContext)
 let {slug } = useParams();
-const room = getRoom(slug)
+const room = getRoom(slug);
+
+if (!room){
+	return(
+		<div className='error' >there is no room
+			<Link to='rooms' className="btn-primary" >Back to Rooms</Link>			
+		</div>
+	)};
+
 const {
 	name,
 	images,
@@ -25,7 +33,6 @@ const pet = pets ? 'Pets Not allowed': 'Pets allowed'
 // header dynamic style
 const singleStyle ={
   minHeight: '60vh',
-  /* background: url(${defaultImg}); */
   backgroundImage : `url(${(images[0] ? images[0] : defaultImg)})`,
   display: 'flex',
   alignItems: 'center',
@@ -64,7 +71,9 @@ return (
         <section className="room-extras">
         	<h6>extras </h6>
           <ul className="extras">
-            
+          {extras.map((exta,index)=>{
+          	return <li key = {index}>{exta}</li>
+          })}
           </ul>
         </section>
 	</section>
