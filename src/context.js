@@ -7,18 +7,23 @@ state ={
   rooms: [],
   sortedRooms:[],
   featuredRooms:[],
-  loading: true
+  loading: true,
+  types:[],
+  capacity:[]
  }
 
 componentDidMount(){
 let rooms = this.formatData(items);
 let featuredRooms = rooms.filter((room)=> room.featured=== true);
-//console.log({rooms});
+let types = [...new Set(rooms.map((room)=>room.type))];
+let capacity = [...new Set(rooms.map((room)=>room.capacity))];
 
 this.setState({
 rooms,
 featuredRooms,
-loading:false
+loading:false,
+types,
+capacity
   })
 }
 // import data from data.js
@@ -40,13 +45,25 @@ getRoom =(slug)=>{
 
   return room;
 }
+// sort room by filterRoom items
+
+sortData =()=>{
+    let tempRooms = [...this.state.rooms];
+
+    console.log(tempRooms)
+  return tempRooms;
+}
+
+
+
 
   render() {
     return (
       <RoomContext.Provider 
       value={{
         ...this.state,
-        getRoom:this.getRoom
+        getRoom:this.getRoom,
+        sortData: this.sortData
       }} >
         {this.props.children}
       </RoomContext.Provider>
