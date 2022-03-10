@@ -12,6 +12,7 @@ let {
   handelChange,
   type,
   capacity,
+  price,
   minPrice,
   maxPrice,
   minSize,
@@ -54,8 +55,19 @@ return (
             className="form-control"
             onChange={handelChange}>
             {capacity}
-            </select>
-            
+            </select>            
+        </div>
+        <div className="form-group">
+         	<label >Room Price ${price}</label>
+         	<input 
+         	type="range" 
+         	name="price" 
+         	id="price" 
+         	min={minPrice} 
+         	max={maxPrice} 
+         	className="form-control" 
+            onChange={handelChange}
+         	value={price}/>           
         </div>
 
     </form>	        

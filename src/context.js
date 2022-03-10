@@ -86,6 +86,8 @@ let tempRooms = [...rooms];
  if (type !== 'all'){
 tempRooms= tempRooms.filter((room)=>room.type==type)
  }
+tempRooms= tempRooms.filter((room)=>room.capacity >=capacity)
+tempRooms= tempRooms.filter((room)=>room.price >=price)
   console.log(tempRooms)
   this.setState({
     sortedRooms:tempRooms
