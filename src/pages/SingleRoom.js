@@ -46,7 +46,7 @@ return (
 			title={`${name} Rooms`}
 			subtitle="Deluxe Rooms Starting At $299"
 			>			
-			<Link to='rooms' className="btn-primary" >Back to Rooms</Link>			
+			<Link to='/rooms/' className="btn-primary" >Back to Rooms</Link>			
 		</Banner>			
 	</header>
 	<section className='single-room'>
