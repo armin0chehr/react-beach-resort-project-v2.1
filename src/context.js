@@ -14,7 +14,9 @@ state ={
   minPrice:0,
   maxPrice:0,
   minSize:0,
-  maxSize:0
+  maxSize:0,
+  breakfast:false,
+  pets:false
  }
 
 componentDidMount(){
@@ -77,17 +79,33 @@ let {
   type,
   capacity,
   price,
-  minPrice,
-  maxPrice,
   minSize,
-  maxSize
+  maxSize,
+  breakfast,
+  pets
  } = this.state;
 let tempRooms = [...rooms];
+ capacity = parseInt(capacity)
+ minSize = parseInt(minSize)
+ maxSize = parseInt(maxSize)
+
+
  if (type !== 'all'){
 tempRooms= tempRooms.filter((room)=>room.type==type)
  }
+ if (capacity !== 1) {
 tempRooms= tempRooms.filter((room)=>room.capacity >=capacity)
-tempRooms= tempRooms.filter((room)=>room.price >=price)
+}
+tempRooms= tempRooms.filter((room)=>room.price <=price)
+tempRooms= tempRooms.filter((room)=>room.size >= minSize && room.size <= maxSize )
+if (breakfast){
+tempRooms= tempRooms.filter((room)=>room.breakfast === breakfast)
+}
+if (pets){
+tempRooms= tempRooms.filter((room)=>room.pets === pets)
+}
+
+
   console.log(tempRooms)
   this.setState({
     sortedRooms:tempRooms
