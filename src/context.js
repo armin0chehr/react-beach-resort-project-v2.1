@@ -8,22 +8,29 @@ state ={
   sortedRooms:[],
   featuredRooms:[],
   loading: true,
-  types:[],
-  capacity:[]
+  type:'all',
+  capacity:1,
+  price:0,
+  minPrice:0,
+  maxPrice:0,
+  minSize:0,
+  maxSize:0
  }
 
 componentDidMount(){
 let rooms = this.formatData(items);
 let featuredRooms = rooms.filter((room)=> room.featured=== true);
-let types = [...new Set(rooms.map((room)=>room.type))];
-let capacity = [...new Set(rooms.map((room)=>room.capacity))];
+let maxPrice = Math.max(...rooms.map((room)=>room.price));
+let maxSize = Math.max(...rooms.map((room)=>room.size));
 
 this.setState({
 rooms,
+sortedRooms:rooms,
 featuredRooms,
 loading:false,
-types,
-capacity
+price:maxPrice,
+maxPrice,
+maxSize
   })
 }
 // import data from data.js
@@ -44,17 +51,49 @@ getRoom =(slug)=>{
   // console.log("Room = " + room)
 
   return room;
-}
+} //end of get room
+
 // sort room by filterRoom items
+handelChange = (event) =>{
 
-sortData =()=>{
-    let tempRooms = [...this.state.rooms];
+  const target = event.target;
+  const value = target.type ==='checkbox' ? target.checked: target.value ;
+  const name = event.target.name;
 
-    console.log(tempRooms)
-  return tempRooms;
+console.log(name,value)
+
+  this.setState(
+  {
+  [name]:value
+  },
+  this.filterRooms
+  )
+
 }
 
+filterRooms=()=>{
+let {
+  rooms,
+  type,
+  capacity,
+  price,
+  minPrice,
+  maxPrice,
+  minSize,
+  maxSize
+ } = this.state;
+let tempRooms = [...rooms];
+ if (type !== 'all'){
+tempRooms= tempRooms.filter((room)=>room.type==type)
+ }
 
+  console.log(tempRooms)
+
+  this.setState({
+    sortedRooms:tempRooms
+  })
+
+}
 
 
   render() {
@@ -63,7 +102,7 @@ sortData =()=>{
       value={{
         ...this.state,
         getRoom:this.getRoom,
-        sortData: this.sortData
+        handelChange: this.handelChange
       }} >
         {this.props.children}
       </RoomContext.Provider>
