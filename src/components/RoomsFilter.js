@@ -5,6 +5,9 @@ import {RoomContext} from '../context';
 
 export default function RoomsFilter({rooms}) {
 	const value = useContext(RoomContext);
+	const getUniqu =(items, val)=>{
+	return [...new Set(items.map((room)=>room[val]))];
+	}
 let {
   handelChange,
   type,
@@ -14,14 +17,19 @@ let {
   minSize,
   maxSize
  }=value;
-const getUniqu =(items, val)=>{
-return [...new Set(items.map((room)=>room[val]))];
-}
-
+//type
 type = getUniqu (rooms,'type');
-type=['all', ...type]
+type=['all', ...type];
+type = type.map((type,index)=>{
+    return <option key={index} value={`${type}`} >{type}</option>
+})
 
-// console.log( type)
+//capacity
+capacity = getUniqu (rooms,'capacity');
+capacity = capacity.map((capacity,index)=>{
+    return <option key={index} value={`${capacity}`} >{capacity}</option>
+})
+
 
 return (
 <>
@@ -35,9 +43,17 @@ return (
             	id="type"
             	className="form-control"
             	onChange={handelChange}>
-            {type.map((type,index)=>{
-            	return <option key={index} value={`${type}`} >{type}</option>
-            })}                
+            {type}                
+            </select>
+        </div>
+        <div className="form-group">
+         	<label >Guests</label>
+            <select
+            name="capacity"
+            id="capacity" 
+            className="form-control"
+            onChange={handelChange}>
+            {capacity}
             </select>
             
         </div>
