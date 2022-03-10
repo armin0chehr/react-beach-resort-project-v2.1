@@ -86,6 +86,7 @@ let tempRooms = [...rooms];
  if (type !== 'all'){
 tempRooms= tempRooms.filter((room)=>room.type==type)
  }
+ 
 
   console.log(tempRooms)
 
