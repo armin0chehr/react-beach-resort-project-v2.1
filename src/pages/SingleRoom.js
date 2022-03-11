@@ -13,7 +13,7 @@ const room = getRoom(slug);
 if (!room){
 	return(
 		<div className='error' >there is no room
-			<Link to='rooms' className="btn-primary" >Back to Rooms</Link>			
+			<Link to='/rooms/' className="btn-primary" >Back to Rooms</Link>			
 		</div>
 	)};
 

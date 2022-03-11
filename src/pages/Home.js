@@ -13,7 +13,7 @@ export default function Home() {
 				title="Luxurious Rooms"
 				subtitle="Deluxe Rooms Starting At $299"
 				>			
-				<Link to='rooms' className="btn-primary" >Our Rooms</Link>			
+				<Link to='/rooms/' className="btn-primary" >Our Rooms</Link>			
 			</Banner>			
 		</Hero>
 		<Services/>

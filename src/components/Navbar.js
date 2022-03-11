@@ -18,7 +18,7 @@ const [isOpen, setIsOpen] = useState(false);
 			</div>
 			<ul className={`nav-links ${isOpen ? "show-nav" : ""}`}>
 				<li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-nav' : '')} >Home</NavLink></li>
-				<li><NavLink to="rooms" className={({ isActive }) => (isActive ? 'active-nav' : '')}>Rooms</NavLink></li>
+				<li><NavLink to="/rooms/" className={({ isActive }) => (isActive ? 'active-nav' : '')}>Rooms</NavLink></li>
 			</ul>
 		</div>
 	</nav>
@@ -26,3 +26,4 @@ const [isOpen, setIsOpen] = useState(false);
 }
 
 
+ 
