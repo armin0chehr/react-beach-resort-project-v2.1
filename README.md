@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project have been created  by john-smilga named react-beach-resort-project and it is updated with router v6 and react hooks .
 
 ## Available Scripts
 
